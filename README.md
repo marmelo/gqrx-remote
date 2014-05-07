@@ -8,8 +8,6 @@ Interacts with gqrx using the
 
 ![gqrx-remote-linux](http://defying.me/dl/gqrx-remote/gqrx-remote-macosx.png)
 
-More screenshots [next](#screenshots).
-
 
 Features
 --
