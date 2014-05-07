@@ -71,7 +71,7 @@ class GqrxRemote(ttk.Frame):
         self.pack(fill=tk.BOTH, expand=1, padx=5, pady=5)
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
-        
+
         # +------------------------------+------------------------------+
         # |                              | Hostname:    _______________ |
         # |                              | Port:        _______________ |
@@ -97,13 +97,13 @@ class GqrxRemote(ttk.Frame):
         ysb.grid(row=0, column=1, sticky=tk.NS)
         xsb = ttk.Scrollbar(self, orient=tk.HORIZONTAL, command=self.tree.xview)
         xsb.grid(row=1, column=0, sticky=tk.EW)
-        self.tree.configure(yscroll=ysb.set, xscroll=xsb.set)        
+        self.tree.configure(yscroll=ysb.set, xscroll=xsb.set)
         self.tree.grid(row=0, column=0, sticky=tk.NSEW)
         self.tree.bind('<Double-Button-1>', self.cb_set_frequency)
 
-        # vertical separator        
+        # vertical separator
         ttk.Frame(self).grid(row=0, column=2, rowspan=2, padx=5)
-        
+
         # right-side container
         self.menu = ttk.Frame(self)
         self.menu.grid(row=0, column=3, rowspan=2, stick=tk.NSEW)
@@ -112,48 +112,48 @@ class GqrxRemote(ttk.Frame):
         ttk.Label(self.menu, text="Hostname:").grid(row=0, column=0, sticky=tk.W)
         self.txt_hostname = ttk.Entry(self.menu)
         self.txt_hostname.grid(row=0, column=1, columnspan=3, padx=2, pady=2, sticky=tk.EW)
-        
+
         ttk.Label(self.menu, text="Port:").grid(row=1, column=0, sticky=tk.W)
         self.txt_port = ttk.Entry(self.menu)
         self.txt_port.grid(row=1, column=1, columnspan=3, padx=2, pady=2, sticky=tk.EW)
-        
+
         # horizontal separator
         ttk.Frame(self.menu).grid(row=2, column=0, columnspan=3, pady=5)
-        
+
         ttk.Label(self.menu, text="Frequency:").grid(row=3, column=0, sticky=tk.W)
         self.txt_frequency = ttk.Entry(self.menu)
         self.txt_frequency.grid(row=3, column=1, columnspan=3, padx=2, pady=2, sticky=tk.EW)
-        
+
         ttk.Label(self.menu, text="Mode:").grid(row=4, column=0, sticky=tk.W)
         self.cbb_mode = ttk.Combobox(self.menu, width=18)
         self.cbb_mode.grid(row=4, column=1, columnspan=3, padx=2, pady=2, sticky=tk.EW)
         self.cbb_mode['values'] = ('', 'OFF', 'RAW', 'AM', 'FM', 'WFM', 'WFM_ST', 'LSB', 'USB', 'CW', 'CWL', 'CWU')
-        
+
         ttk.Label(self.menu, text="Description:").grid(row=5, column=0, sticky=tk.W)
         self.txt_description = ttk.Entry(self.menu)
         self.txt_description.grid(row=5, column=1, columnspan=3, padx=2, pady=2, sticky=tk.EW)
-        
+
         self.btn_add = ttk.Button(self.menu, text="Add", width=6, command=self.cb_add)
         self.btn_add.grid(row=6, column=1, padx=2, pady=2)
-        
+
         self.btn_delete = ttk.Button(self.menu, text="Delete", width=6, command=self.cb_delete)
         self.btn_delete.grid(row=6, column=2, padx=2, pady=2)
-        
+
         self.btn_load = ttk.Button(self.menu, text="Get", width=6, command=self.cb_get_frequency)
         self.btn_load.grid(row=6, column=3, padx=2, pady=2)
-        
+
         self.ckb_top = ttk.Checkbutton(self.menu, text="Always on top?", command=self.cb_top)
         self.ckb_top.grid(row=8, column=0, columnspan=2, sticky=tk.E)
-        
+
         self.btn_quit = ttk.Button(self.menu, text="Quit", command=self.master.destroy)
         self.btn_quit.grid(row=8, column=2, columnspan=2, sticky=tk.SE)
-        
+
         # set initial status
         self.txt_hostname.insert(0, "127.0.0.1")
         self.txt_port.insert(0, "7356")
         self.cbb_mode.current(0)
         self.ckb_top.invoke()
-        
+
     def csv_load(self):
         """Read the frequency bookmarks file and populate the tree."""
         if os.path.isfile(self.config):
@@ -162,7 +162,7 @@ class GqrxRemote(ttk.Frame):
                 for line in reader:
                     line[0] = self._frequency_pp(line[0])
                     self.tree.insert('', tk.END, values=line)
-            
+
     def csv_save(self):
         """Save current frequencies to disk."""
         with open(self.config, 'w') as file:
@@ -190,7 +190,6 @@ class GqrxRemote(ttk.Frame):
             self.cbb_mode.insert(0, mode)
         except Exception as err:
             tkinter.messagebox.showerror("Error", "Could not connect to gqrx.\n%s" % err)
-
 
     def cb_set_frequency(self, event):
         """Set the gqrx frequency and mode."""
@@ -220,9 +219,9 @@ class GqrxRemote(ttk.Frame):
         self.tree.selection_set(item)
         self.tree.focus(item)
         self.tree.see(item)
-        # save        
+        # save
         self.csv_save()
-        
+
     def cb_delete(self):
         """Delete frequency from tree."""
         item = self.tree.focus()
@@ -230,7 +229,7 @@ class GqrxRemote(ttk.Frame):
             self.tree.delete(item)
             # save
             self.csv_save()
-        
+
     def _connect(self):
         return RigCtl(self.txt_hostname.get(), self.txt_port.get())
 
