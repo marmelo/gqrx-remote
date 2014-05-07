@@ -10,7 +10,7 @@ http://gqrx.dk/doc/remote-control
 http://sourceforge.net/apps/mediawiki/hamlib/index.php?title=Documentation
 
 Author: Rafael Marmelo <rafael@defying.me>
-Licence: MIT Licence
+License: MIT License
 
 Copyright (c) 2014 Rafael Marmelo
 """
