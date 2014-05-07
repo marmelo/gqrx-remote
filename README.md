@@ -3,11 +3,15 @@ gqrx-remote
 
 Remotely control [gqrx](http://gqrx.dk/) while keeping your bookmarks in order.
 
-Interacts with gqrx using [rigctl](http://sourceforge.net/apps/mediawiki/hamlib/index.php?title=Documentation) protocol (which is partially implemented since gqrx v2.3). Read [this](http://gqrx.dk/doc/remote-control).
+Interacts with gqrx using [rigctl](http://sourceforge.net/apps/mediawiki/hamlib/index.php?title=Documentation) protocol (which is [partially implemented since gqrx v2.3](http://gqrx.dk/doc/remote-control)).
+
+![gqrx-remote-linux](http://defying.me/dl/gqrx-remote/gqrx-remote-linux.png)
+
+More screenshots [next](#screenshots).
 
 
 Features
----
+--
 
 - Bookmark frequencies and modes
 - Create bookmarks from the current gqrx frequency and mode
@@ -50,6 +54,21 @@ $ python3 gqrx-remote.py
 ```
 
 If you are using Windows you just need to double-click the ```gqrx-remote.py``` file (as the  ```.py``` file type is most likely already bound with ```python``` executable). If you want to get rid of the anoying command-line that is always running in background you may rename ```gqrx-remote.py``` to ```gqrx-remote.pyw``` and Windows will use the ```pythonw``` executable instead (which does not need the command-line).
+
+
+Screenshots
+---
+
+This software is built using Python default GUI -- [Tkinter](https://docs.python.org/3/library/tkinter.html) with [Ttk](https://docs.python.org/3/library/tkinter.ttk.html) -- which allows us to have an almost-native cross-platform look and feel while using the same code.
+
+**Linux**
+![gqrx-remote-linux](http://defying.me/dl/gqrx-remote/gqrx-remote-linux.png)
+
+**Mac OS X**
+![gqrx-remote-macosx](http://defying.me/dl/gqrx-remote/gqrx-remote-macosx.png)
+
+**Windows**
+![gqrx-remote-windows](http://defying.me/dl/gqrx-remote/gqrx-remote-windows.png)
 
 
 Bookmark Database
