@@ -189,7 +189,7 @@ class GqrxRemote(ttk.Frame):
             self.txt_frequency.insert(0, self._frequency_pp(frequency))
             self.cbb_mode.insert(0, mode)
         except Exception as err:
-            tkinter.messagebox.showerror("Error", "Could not connect to gqrx.\n%s" % err)
+            tkinter.messagebox.showerror("Error", "Could not connect to gqrx.\n%s" % err, parent=self)
 
     def cb_set_frequency(self, event):
         """Set the gqrx frequency and mode."""
@@ -199,7 +199,7 @@ class GqrxRemote(ttk.Frame):
             self._connect().set_frequency(values[0].replace(',', ''))
             self._connect().set_mode(values[1])
         except Exception as err:
-            tkinter.messagebox.showerror("Error", "Could not set frequency.\n%s" % err)
+            tkinter.messagebox.showerror("Error", "Could not set frequency.\n%s" % err, parent=self)
 
     def cb_add(self):
         """Add frequency to tree."""
