@@ -99,6 +99,7 @@ class GqrxRemote(ttk.Frame):
         xsb.grid(row=1, column=0, sticky=tk.EW)
         self.tree.configure(yscroll=ysb.set, xscroll=xsb.set)
         self.tree.grid(row=0, column=0, sticky=tk.NSEW)
+        self.tree.bind('<<TreeviewSelect>>', self.cb_autofill_form)
         self.tree.bind('<Double-Button-1>', self.cb_set_frequency)
 
         # vertical separator
@@ -200,6 +201,17 @@ class GqrxRemote(ttk.Frame):
             self._connect().set_mode(values[1])
         except Exception as err:
             tkinter.messagebox.showerror("Error", "Could not set frequency.\n%s" % err, parent=self)
+
+    def cb_autofill_form(self, event):
+        """Auto-fill bookmark fields with details of currently selected Treeview entry."""
+        item = self.tree.focus()
+        values = self.tree.item(item).get('values')
+        self.txt_frequency.delete(0, tk.END)
+        self.txt_frequency.insert(0, values[0])
+        self.cbb_mode.delete(0, tk.END)
+        self.cbb_mode.insert(0, values[1])
+        self.txt_description.delete(0, tk.END)
+        self.txt_description.insert(0, values[2])
 
     def cb_add(self):
         """Add frequency to tree."""
