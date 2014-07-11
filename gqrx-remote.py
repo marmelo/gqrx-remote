@@ -223,9 +223,13 @@ class GqrxRemote(ttk.Frame):
         idx = tk.END
         for item in self.tree.get_children():
             curr_freq = self._frequency_pp_parse(self.tree.item(item).get('values')[0])
+            curr_mode = self.tree.item(item).get('values')[1]
             if frequency < curr_freq:
                 idx = self.tree.index(item)
                 break
+            elif frequency == curr_freq and mode == curr_mode:
+                # Do more than raise exception here.
+                raise ValueError
         # insert
         item = self.tree.insert('', idx, values=[self._frequency_pp(frequency), mode, description])
         self.tree.selection_set(item)
