@@ -228,8 +228,8 @@ class GqrxRemote(ttk.Frame):
                 idx = self.tree.index(item)
                 break
             elif frequency == curr_freq and mode == curr_mode:
-                # Do more than raise exception here.
-                raise ValueError
+                tkinter.messagebox.showerror("Error", "A bookmark with the same frequency and mode already exists.", parent=self)
+                return
         # insert
         item = self.tree.insert('', idx, values=[self._frequency_pp(frequency), mode, description])
         self.tree.selection_set(item)
