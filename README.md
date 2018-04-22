@@ -3,7 +3,7 @@ gqrx-remote
 
 Remotely control [gqrx](http://gqrx.dk/) while keeping your bookmarks in order. Interacts with gqrx using the [rigctl](http://sourceforge.net/apps/mediawiki/hamlib/index.php?title=Documentation) protocol (which is [partially implemented since gqrx v2.3](http://gqrx.dk/doc/remote-control)).
 
-![gqrx-remote-linux](http://dl.defying.me/gqrx-remote/gqrx-remote-linux.png)
+![gqrx-remote-linux](https://raw.githubusercontent.com/marmelo/gqrx-remote/master/screenshots/gqrx-remote-linux.png)
 
 
 Features
@@ -58,13 +58,13 @@ Screenshots
 This software is built using Python default GUI -- [Tkinter](https://docs.python.org/3/library/tkinter.html) with [Ttk](https://docs.python.org/3/library/tkinter.ttk.html) -- which allows us to have an almost-native cross-platform look and feel while using the same code.
 
 **Linux**
-![gqrx-remote-linux](http://dl.defying.me/gqrx-remote/gqrx-remote-linux.png)
+![gqrx-remote-linux](https://raw.githubusercontent.com/marmelo/gqrx-remote/master/screenshots/gqrx-remote-linux.png)
 
 **Mac OS X**
-![gqrx-remote-macosx](http://dl.defying.me/gqrx-remote/gqrx-remote-macosx.png)
+![gqrx-remote-macosx](https://raw.githubusercontent.com/marmelo/gqrx-remote/master/screenshots/gqrx-remote-macosx.png)
 
 **Windows**
-![gqrx-remote-windows](http://dl.defying.me/gqrx-remote/gqrx-remote-windows.png)
+![gqrx-remote-windows](https://raw.githubusercontent.com/marmelo/gqrx-remote/master/screenshots/gqrx-remote-windows.png)
 
 
 Bookmark Database
